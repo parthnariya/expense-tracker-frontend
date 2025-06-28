@@ -1,6 +1,7 @@
 import { Container, CssBaseline } from '@mui/material';
 import { Outlet } from 'react-router';
 
+import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 
 const RootLayout = () => {
@@ -22,6 +23,7 @@ const RootLayout = () => {
       >
         <Outlet />
       </Container>
+      <Footer />
     </>
   );
 };
