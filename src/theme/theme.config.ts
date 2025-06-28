@@ -5,10 +5,12 @@ declare module '@mui/material/styles' {
   interface Palette {
     green: Palette['grey'];
     red: Palette['grey'];
+    blue: Palette['grey'];
   }
   interface PaletteOptions {
     green?: PaletteOptions['grey'];
     red?: PaletteOptions['grey'];
+    blue?: PaletteOptions['grey'];
   }
 }
 
@@ -40,12 +42,18 @@ const lightTheme = createTheme({
     grey: {
       '900': '#111827',
       '600': '#4b5563',
+      '50': '#f9fafb',
+      '100': '#f3f4f6',
     },
     green: {
       '100': '#dcfce7',
     },
     red: {
       '100': '#fee2e2',
+    },
+    blue: {
+      '100': '#dbeafe',
+      '200': '#bfdbfe',
     },
   },
   typography: {
@@ -85,12 +93,18 @@ const darkTheme = createTheme({
     grey: {
       '900': '#FFFFFF',
       '600': '#d1d5db',
+      '50': '#1e293b',
+      '100': '#334155',
     },
     green: {
       '100': '#dcfce7',
     },
     red: {
       '100': '#7f1d1d',
+    },
+    blue: {
+      '100': '#1e3a8a',
+      '200': '#1e40af',
     },
   },
   typography: {
