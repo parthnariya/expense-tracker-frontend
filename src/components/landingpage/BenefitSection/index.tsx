@@ -6,6 +6,8 @@ import BenefitList from './BenefitList';
 const BenefitSection = () => {
   return (
     <Container
+      component="section"
+      maxWidth={false}
       sx={{
         py: {
           xs: 8,
@@ -15,32 +17,30 @@ const BenefitSection = () => {
         width: '100%',
         backgroundColor: (theme) => theme.palette.grey[50],
       }}
-      component="section"
-      maxWidth={false}
     >
       <Container
-        sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto', textAlign: 'center' }}
         maxWidth="md"
+        sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto', textAlign: 'center' }}
       >
         <Typography
+          color="grey.900"
           component="h2"
           fontWeight={700}
-          color="grey.900"
           mb={3}
-          variant="h3"
           textAlign="center"
+          variant="h3"
         >
           Ready to Transform Your Financial Life?
         </Typography>
 
         <Typography
-          component="p"
           color="grey.600"
+          component="p"
+          maxWidth="md"
           mb={6}
           mx="auto"
-          variant="h6"
-          maxWidth="md"
           textAlign="center"
+          variant="h6"
         >
           Join thousands of users who have already taken control of their
           finances. Start your journey to financial freedom today – it's
@@ -49,7 +49,7 @@ const BenefitSection = () => {
 
         <BenefitList />
 
-        <Button variant="contained" size="large" endIcon={<ArrowRight />}>
+        <Button endIcon={<ArrowRight />} size="large" variant="contained">
           Start Tracking Now
         </Button>
       </Container>

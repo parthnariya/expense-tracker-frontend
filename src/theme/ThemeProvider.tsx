@@ -22,7 +22,6 @@ const ThemeProvider = ({ children }: ThemeProviderPropsType) => {
   const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
-    console.log(theme.toString());
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
@@ -30,8 +29,6 @@ const ThemeProvider = ({ children }: ThemeProviderPropsType) => {
     () => (theme === 'light' ? lightTheme : darkTheme),
     [theme],
   );
-
-  console.log({ muiTheme });
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

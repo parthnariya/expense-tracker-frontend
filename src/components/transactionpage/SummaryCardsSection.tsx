@@ -43,6 +43,8 @@ const SummaryCardsSection = () => {
 
   return (
     <Container
+      component="section"
+      maxWidth={false}
       sx={{
         py: {
           xs: 1,
@@ -51,58 +53,56 @@ const SummaryCardsSection = () => {
         px: 0,
         width: '100%',
       }}
-      component="section"
-      maxWidth={false}
     >
-      <Container sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }} maxWidth="lg">
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}>
         <Box flexGrow={1}>
           <Grid container p={2} spacing={2}>
             {summaryCards.map(({ Icon, amount, color, title, bgColor }) => (
               <Grid
+                bgcolor="background.paper"
                 border={1}
-                borderRadius={1.5}
                 borderColor="grey.200"
-                bgcolor={'background.paper'}
+                borderRadius={1.5}
+                boxShadow={1}
+                p={3}
                 size={{
                   xs: 12,
                   md: 4,
                 }}
-                boxShadow={1}
-                p={3}
               >
                 <Stack
-                  direction="row"
                   alignItems="center"
+                  direction="row"
                   justifyContent="space-between"
                 >
                   <Box flex={1}>
                     <Typography
-                      component="p"
-                      variant="subtitle2"
-                      fontWeight={500}
                       color="text.secondary"
+                      component="p"
+                      fontWeight={500}
+                      variant="subtitle2"
                     >
                       {title}
                     </Typography>
 
                     <Typography
-                      component="p"
-                      variant="h5"
                       color={color}
+                      component="p"
                       fontWeight={600}
+                      variant="h5"
                     >
                       {formatCurrency(amount)}
                     </Typography>
                   </Box>
                   <Typography
-                    display="flex"
                     alignItems="center"
-                    justifyContent="center"
-                    width={48}
-                    color={color}
-                    height={48}
-                    position="relative"
                     bgcolor={bgColor}
+                    color={color}
+                    display="flex"
+                    height={48}
+                    justifyContent="center"
+                    position="relative"
+                    width={48}
                   >
                     <Icon size={24} />
                   </Typography>

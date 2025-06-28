@@ -7,6 +7,8 @@ import { MARKETING_STATS } from '@/constants/messages';
 const StateSection = () => {
   return (
     <Container
+      component="section"
+      maxWidth={false}
       sx={{
         py: {
           xs: 8,
@@ -16,20 +18,18 @@ const StateSection = () => {
         background: (theme) => theme.palette.blue[600],
         width: '100%',
       }}
-      component="section"
-      maxWidth={false}
     >
-      <Container sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }} maxWidth="lg">
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}>
         <Box mb={8} textAlign="center">
-          <Typography fontWeight={700} variant="h3" color="white">
+          <Typography color="white" fontWeight={700} variant="h3">
             Trusted by Thousands of Users
           </Typography>
           <Typography
-            variant="h6"
+            color="white"
             maxWidth="md"
             mx="auto"
-            color="white"
             sx={{ opacity: 0.75 }}
+            variant="h6"
           >
             Join a growing community of people who have taken control of their
             finances and are building a better financial future.

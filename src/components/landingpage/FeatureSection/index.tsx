@@ -7,6 +7,8 @@ import { FEATURES } from '@/constants/messages';
 const FeatureSection = () => {
   return (
     <Container
+      component="section"
+      maxWidth={false}
       sx={{
         py: {
           xs: 8,
@@ -15,31 +17,29 @@ const FeatureSection = () => {
         px: 0,
         width: '100%',
       }}
-      component="section"
-      maxWidth={false}
     >
-      <Container sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }} maxWidth="lg">
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}>
         <Box mb={8}>
           <Typography
-            component="h2"
-            variant="h3"
-            fontWeight="700"
-            textAlign="center"
             color="grey.900"
+            component="h2"
+            fontWeight="700"
             mb={3}
+            textAlign="center"
+            variant="h3"
           >
             Everything You Need to Manage Your Finances
           </Typography>
 
           <Typography
-            component="p"
-            variant="h6"
-            fontWeight="700"
-            textAlign="center"
             color="grey.600"
+            component="p"
+            fontWeight="700"
+            maxWidth="md"
             mb={3}
             mx="auto"
-            maxWidth="md"
+            textAlign="center"
+            variant="h6"
           >
             Powerful features designed to give you complete control over your
             personal finances. Simple enough for beginners, comprehensive enough
@@ -51,9 +51,9 @@ const FeatureSection = () => {
           <Grid container={true} spacing={2}>
             {FEATURES.map((feature, index) => (
               <FeatureCard
-                Icon={feature.icon}
                 key={index}
                 description={feature.description}
+                Icon={feature.icon}
                 title={feature.title}
               />
             ))}

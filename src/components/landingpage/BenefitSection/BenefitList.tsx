@@ -6,25 +6,25 @@ import { BENEFITS } from '@/constants/messages';
 const BenefitList = () => {
   return (
     <Box flexGrow={1}>
-      <Grid container maxWidth="md" spacing={2} mx="auto" mb={6}>
+      <Grid container maxWidth="md" mb={6} mx="auto" spacing={2}>
         {BENEFITS.map((benefit, index) => (
           <Grid size={{ xs: 12, sm: 6 }}>
             <Stack
-              direction="row"
+              key={index}
               alignItems="center"
-              justifyContent="flex-start"
-              spacing={1.5}
               bgcolor="background.paper"
               border={1}
-              borderColor={'grey.200'}
+              borderColor="grey.200"
               borderRadius={1.5}
+              direction="row"
+              justifyContent="flex-start"
               p={2}
-              key={index}
+              spacing={1.5}
             >
-              <Box flexShrink={0} color={'secondary'}>
+              <Box color="secondary" flexShrink={0}>
                 <Check color="#66BB6A" size={20} strokeWidth={3} />
               </Box>
-              <Typography component="span" color="grey.800">
+              <Typography color="grey.800" component="span">
                 {benefit}
               </Typography>
             </Stack>

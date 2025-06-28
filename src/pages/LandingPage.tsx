@@ -18,6 +18,8 @@ const LandingPage = () => {
       <BenefitSection />
 
       <Container
+        component="section"
+        maxWidth={false}
         sx={{
           py: {
             xs: 8,
@@ -26,21 +28,19 @@ const LandingPage = () => {
           px: 0,
           width: '100%',
         }}
-        component="section"
-        maxWidth={false}
       >
         <Container
-          sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}
           maxWidth="lg"
+          sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}
         >
           <Stack alignItems="center" justifyContent="center">
             <AppLogo />
 
             <Typography
-              maxWidth="sm"
               color="grey.600"
-              textAlign="center"
+              maxWidth="sm"
               my={3}
+              textAlign="center"
             >
               Take control of your financial future with our comprehensive
               personal finance management tool.

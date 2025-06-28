@@ -14,12 +14,12 @@ const RootLayout = () => {
       {/* Main Content */}
       <Container
         component="main"
+        maxWidth={false}
         sx={{
           backgroundColor: (theme) => theme.palette.background.default,
           width: '100vw',
           padding: 0,
         }}
-        maxWidth={false}
       >
         <Outlet />
       </Container>

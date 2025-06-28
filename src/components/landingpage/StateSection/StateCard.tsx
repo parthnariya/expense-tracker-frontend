@@ -31,40 +31,40 @@ const StateCard = ({ description, Icon, label, value }: StateCardPropType) => {
           }}
         >
           <Stack
-            width={'4rem'}
-            height={'4rem'}
-            bgcolor={`blue.500`}
-            borderRadius={4}
-            mb={2}
-            justifyContent="center"
             alignItems="center"
+            bgcolor="blue.500"
+            borderRadius={4}
+            height="4rem"
+            justifyContent="center"
+            mb={2}
+            width="4rem"
           >
-            <Icon strokeWidth={2} size={24} color="white" />
+            <Icon color="white" size={24} strokeWidth={2} />
           </Stack>
 
           <Typography
+            color="white"
             component="div"
             fontWeight="700"
-            color="white"
             variant="h4"
           >
             {value}
           </Typography>
 
           <Typography
+            color="white"
             component="div"
             fontWeight="600"
-            color="white"
             variant="h6"
           >
             {label}
           </Typography>
 
           <Typography
-            component="p"
             color="white"
-            variant="subtitle2"
+            component="p"
             textAlign="center"
+            variant="subtitle2"
           >
             {description}
           </Typography>

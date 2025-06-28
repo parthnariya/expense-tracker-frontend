@@ -6,13 +6,13 @@ import ThemeSwitch from '@/components/ui/ThemeSwitch';
 const Navbar = () => {
   return (
     <AppBar
+      component="nav"
       position="static"
       sx={{
         backgroundColor: (theme) => theme.palette.background.paper,
         boxShadow: 'none',
         backdropFilter: 'blur(12px)',
       }}
-      component="nav"
     >
       <Toolbar
         sx={{

@@ -6,6 +6,8 @@ import { TRUST_INDICATOR } from '@/constants/messages';
 const HeroSection = () => {
   return (
     <Container
+      component="section"
+      maxWidth={false}
       sx={{
         py: {
           xs: 8,
@@ -18,16 +20,14 @@ const HeroSection = () => {
             : `linear-gradient(to bottom right, ${theme.palette.augmentColor({ color: { main: '#EBF8FF' } }).light} 0%, ${theme.palette.augmentColor({ color: { main: '#C3DAFE' } }).light} 100%)`,
         width: '100%',
       }}
-      component="section"
-      maxWidth={false}
     >
-      <Container sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }} maxWidth="lg">
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}>
         <Grid
-          display="grid"
-          sx={{ gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' } }}
-          gap={6}
           alignItems="center"
           container
+          display="grid"
+          gap={6}
+          sx={{ gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' } }}
         >
           <Grid columns={{ xs: 12, lg: 6 }}>
             <Stack
@@ -35,6 +35,9 @@ const HeroSection = () => {
               textAlign={{ xs: 'center', lg: 'left' }}
             >
               <Typography
+                component="h1"
+                fontWeight="700"
+                marginBottom={3}
                 sx={{
                   fontSize: {
                     xs: '2.25rem',
@@ -44,14 +47,11 @@ const HeroSection = () => {
                   lineHeight: 1,
                   color: (theme) => theme.palette.grey[900],
                 }}
-                component="h1"
-                fontWeight="700"
-                marginBottom={3}
               >
                 Take Control of Your&nbsp;
                 <Typography
-                  component="span"
                   color="primary"
+                  component="span"
                   fontWeight="700"
                   sx={{
                     fontSize: {
@@ -68,40 +68,40 @@ const HeroSection = () => {
 
               <Typography
                 fontSize="20px"
-                maxWidth="672px"
                 marginBottom={4}
-                textAlign={{ xs: 'center', lg: 'left' }}
+                maxWidth="672px"
                 sx={{ color: (theme) => theme.palette.grey[600] }}
+                textAlign={{ xs: 'center', lg: 'left' }}
               >
                 Track, categorize, and visualize your personal financial
                 transactions with powerful insights. Make informed decisions
                 about your spending patterns and achieve your financial goals.
               </Typography>
-              <Button variant="contained" size="large" endIcon={<ArrowRight />}>
+              <Button endIcon={<ArrowRight />} size="large" variant="contained">
                 Start Tracking
               </Button>
 
               <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                marginTop={6}
-                gap={3}
                 alignItems="center"
+                direction={{ xs: 'column', sm: 'row' }}
+                gap={3}
                 justifyContent={{ xs: 'center', lg: 'flex-start' }}
+                marginTop={6}
               >
                 {TRUST_INDICATOR.map((listItem, index) => (
                   <Stack
-                    direction="row"
-                    gap={1}
                     key={index}
                     alignItems="center"
+                    direction="row"
+                    gap={1}
                   >
                     <Box
-                      height={'8px'}
-                      width={'8px'}
                       bgcolor={listItem.color}
                       borderRadius="2in"
+                      height="8px"
+                      width="8px"
                     />
-                    <Typography component="span" fontSize={'14px'}>
+                    <Typography component="span" fontSize="14px">
                       {listItem.detail}
                     </Typography>
                   </Stack>
@@ -114,8 +114,8 @@ const HeroSection = () => {
             <Box sx={{ position: 'relative' }}>
               <Box sx={{ position: 'relative', zIndex: 10 }}>
                 <img
-                  src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   alt="Personal finance management dashboard showing charts and transaction data"
+                  src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   style={{
                     width: '100%',
                     height: 'auto',
@@ -124,30 +124,30 @@ const HeroSection = () => {
                 />
               </Box>
               <Box
-                position="absolute"
-                top={-16}
+                borderRadius={2}
+                display={{ xs: 'none', lg: 'block' }}
                 left={-16}
+                p={2}
+                position="absolute"
                 sx={{
                   backgroundColor: (theme) => theme.palette.background.default,
                 }}
-                borderRadius={2}
-                p={2}
+                top={-16}
                 zIndex={20}
-                display={{ xs: 'none', lg: 'block' }}
               >
-                <Stack direction={'row'} alignItems="center" gap={0.5}>
+                <Stack alignItems="center" direction="row" gap={0.5}>
                   <Stack
-                    width={40}
+                    alignItems="center"
                     height={40}
+                    justifyContent="center"
                     sx={{
                       backgroundColor: (theme) => theme.palette.green[100],
                     }}
-                    justifyContent="center"
-                    alignItems="center"
+                    width={40}
                   >
                     <Typography
-                      component="span"
                       color="secondary"
+                      component="span"
                       variant="subtitle1"
                     >
                       +
@@ -156,19 +156,19 @@ const HeroSection = () => {
                   <Box>
                     <Typography
                       component="p"
-                      variant="subtitle2"
-                      sx={{ color: (theme) => theme.palette.grey[900] }}
                       fontWeight={600}
                       margin={0}
+                      sx={{ color: (theme) => theme.palette.grey[900] }}
+                      variant="subtitle2"
                     >
                       Income
                     </Typography>
                     <Typography
                       component="p"
-                      variant="subtitle1"
-                      sx={{ color: (theme) => theme.palette.secondary.main }}
                       fontWeight={700}
                       margin={0}
+                      sx={{ color: (theme) => theme.palette.secondary.main }}
+                      variant="subtitle1"
                     >
                       +1205
                     </Typography>
@@ -176,30 +176,30 @@ const HeroSection = () => {
                 </Stack>
               </Box>
               <Box
-                position="absolute"
+                borderRadius={2}
                 bottom={-16}
+                display={{ xs: 'none', lg: 'block' }}
+                p={2}
+                position="absolute"
                 right={-16}
                 sx={{
                   backgroundColor: (theme) => theme.palette.background.default,
                 }}
-                borderRadius={2}
-                p={2}
                 zIndex={20}
-                display={{ xs: 'none', lg: 'block' }}
               >
-                <Stack direction={'row'} alignItems="center" gap={0.5}>
+                <Stack alignItems="center" direction="row" gap={0.5}>
                   <Stack
-                    width={40}
+                    alignItems="center"
                     height={40}
+                    justifyContent="center"
                     sx={{
                       backgroundColor: (theme) => theme.palette.red[100],
                     }}
-                    justifyContent="center"
-                    alignItems="center"
+                    width={40}
                   >
                     <Typography
-                      component="span"
                       color="error"
+                      component="span"
                       variant="subtitle1"
                     >
                       -
@@ -208,19 +208,19 @@ const HeroSection = () => {
                   <Box>
                     <Typography
                       component="p"
-                      variant="subtitle2"
-                      sx={{ color: (theme) => theme.palette.grey[900] }}
                       fontWeight={600}
                       margin={0}
+                      sx={{ color: (theme) => theme.palette.grey[900] }}
+                      variant="subtitle2"
                     >
                       Expense
                     </Typography>
                     <Typography
                       component="p"
-                      variant="subtitle1"
-                      sx={{ color: (theme) => theme.palette.error.main }}
                       fontWeight={700}
                       margin={0}
+                      sx={{ color: (theme) => theme.palette.error.main }}
+                      variant="subtitle1"
                     >
                       -589
                     </Typography>

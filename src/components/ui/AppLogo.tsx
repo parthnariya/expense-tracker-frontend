@@ -4,23 +4,23 @@ import { PiggyBank } from 'lucide-react';
 const AppLogo = () => {
   return (
     <Stack
-      gap={1.2}
-      direction="row"
       alignItems="center"
+      direction="row"
+      gap={1.2}
       justifyContent="center"
     >
       <Stack
         alignItems="center"
-        justifyContent="center"
         color={(theme) => theme.palette.primary.main}
+        justifyContent="center"
       >
-        <PiggyBank width="32px" height="32px" />
+        <PiggyBank height="32px" width="32px" />
       </Stack>
       <Typography
-        component="span"
-        variant="h6"
-        fontWeight="600"
         color="primary"
+        component="span"
+        fontWeight="600"
+        variant="h6"
       >
         Expense Tracker
       </Typography>

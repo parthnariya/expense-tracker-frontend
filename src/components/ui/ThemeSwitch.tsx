@@ -15,19 +15,19 @@ const ThemeSwitch = () => {
 
   return (
     <IconButton
-      onClick={onClickHandler}
       sx={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         p: 1,
       }}
+      onClick={onClickHandler}
     >
       <Box
+        color={(theme) => theme.palette.text.secondary}
+        height="20px"
         sx={{ position: 'relative' }}
         width="20px"
-        height={'20px'}
-        color={(theme) => theme.palette.text.secondary}
       >
         <Sun
           size={20}

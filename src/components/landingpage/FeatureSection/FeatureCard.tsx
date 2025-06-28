@@ -30,22 +30,22 @@ const FeatureCard = ({ Icon, description, title }: StateCardPropType) => {
       >
         <CardContent sx={{ padding: 0 }}>
           <Stack
-            width={'4rem'}
-            height={'4rem'}
-            bgcolor={`blue.100`}
-            borderRadius={4}
-            mb={3}
-            justifyContent="center"
             alignItems="center"
+            bgcolor="blue.100"
+            borderRadius={4}
+            height="4rem"
+            justifyContent="center"
+            mb={3}
+            width="4rem"
           >
-            <Icon strokeWidth={2} size={24} color="#2563eb" />
+            <Icon color="#2563eb" size={24} strokeWidth={2} />
           </Stack>
 
-          <Typography fontWeight={'600'} variant="h6" color="grey.900" mb={2}>
+          <Typography color="grey.900" fontWeight="600" mb={2} variant="h6">
             {title}
           </Typography>
 
-          <Typography lineHeight={1.625} color="grey.600">
+          <Typography color="grey.600" lineHeight={1.625}>
             {description}
           </Typography>
         </CardContent>
