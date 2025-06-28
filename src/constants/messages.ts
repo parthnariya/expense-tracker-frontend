@@ -1,10 +1,13 @@
 import {
   BarChart3,
+  DollarSign,
   Filter,
   Moon,
   Receipt,
   Smartphone,
   Tags,
+  TrendingUp,
+  Users,
 } from 'lucide-react';
 
 export const TRUST_INDICATOR = [
@@ -58,5 +61,32 @@ export const FEATURES = [
     title: 'Dark Mode Support',
     description:
       'Choose between light and dark themes for comfortable viewing in any lighting condition. Your eyes will thank you.',
+  },
+];
+
+export const MARKETING_STATS = [
+  {
+    icon: Users,
+    value: '10,000+',
+    label: 'Active Users',
+    description: 'People trust us with their financial data',
+  },
+  {
+    icon: Receipt,
+    value: '500K+',
+    label: 'Transactions Tracked',
+    description: 'Financial transactions managed successfully',
+  },
+  {
+    icon: DollarSign,
+    value: '$2.5M+',
+    label: 'Money Managed',
+    description: 'Total value of transactions processed',
+  },
+  {
+    icon: TrendingUp,
+    value: '95%',
+    label: 'User Satisfaction',
+    description: 'Users report better financial awareness',
   },
 ];

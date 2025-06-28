@@ -54,6 +54,8 @@ const lightTheme = createTheme({
     blue: {
       '100': '#dbeafe',
       '200': '#bfdbfe',
+      '500': '#3b82f6',
+      '600': '#2563eb',
     },
   },
   typography: {
@@ -105,6 +107,8 @@ const darkTheme = createTheme({
     blue: {
       '100': '#1e3a8a',
       '200': '#1e40af',
+      '500': '#1d4ed8 ',
+      '600': '#1e40af',
     },
   },
   typography: {

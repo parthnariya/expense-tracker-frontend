@@ -2,6 +2,7 @@ import { Container } from '@mui/material';
 
 import FeatureSection from '@/components/landingpage/FeatureSection';
 import HeroSection from '@/components/landingpage/HeroSection';
+import StateSection from '@/components/landingpage/StateSection';
 
 const LandingPage = () => {
   return (
@@ -9,6 +10,8 @@ const LandingPage = () => {
       <HeroSection />
 
       <FeatureSection />
+
+      <StateSection />
     </Container>
   );
 };
