@@ -15,8 +15,10 @@ const RootLayout = () => {
         component="main"
         sx={{
           backgroundColor: (theme) => theme.palette.background.default,
-          padding: 2,
+          width: '100vw',
+          padding: 0,
         }}
+        maxWidth={false}
       >
         <Outlet />
       </Container>

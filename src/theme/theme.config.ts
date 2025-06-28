@@ -1,6 +1,17 @@
 import { createTheme } from '@mui/material/styles';
 import { responsiveFontSizes } from '@mui/material/styles';
 
+declare module '@mui/material/styles' {
+  interface Palette {
+    green: Palette['grey'];
+    red: Palette['grey'];
+  }
+  interface PaletteOptions {
+    green?: PaletteOptions['grey'];
+    red?: PaletteOptions['grey'];
+  }
+}
+
 // Light Theme Configuration
 const lightTheme = createTheme({
   palette: {
@@ -26,6 +37,16 @@ const lightTheme = createTheme({
       main: '#D32F2F', // Red for errors and expenses
     },
     divider: '#E5E7EB', // Light gray for dividers
+    grey: {
+      '900': '#111827',
+      '600': '#4b5563',
+    },
+    green: {
+      '100': '#dcfce7',
+    },
+    red: {
+      '100': '#fee2e2',
+    },
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -61,6 +82,16 @@ const darkTheme = createTheme({
       main: '#EF5350', // Light red for errors and expenses
     },
     divider: '#2D2D2D', // Dark gray for dividers
+    grey: {
+      '900': '#FFFFFF',
+      '600': '#d1d5db',
+    },
+    green: {
+      '100': '#dcfce7',
+    },
+    red: {
+      '100': '#7f1d1d',
+    },
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',

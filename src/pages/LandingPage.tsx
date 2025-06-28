@@ -1,23 +1,12 @@
-import { Box, Button } from '@mui/material';
+import { Container } from '@mui/material';
 
-import { useTheme } from '@/theme/ThemeProvider';
+import HeroSection from '@/components/landingpage/HeroSection';
 
 const LandingPage = () => {
-  const { toggleTheme } = useTheme();
-
   return (
-    <Box>
-      <Button
-        variant="text"
-        onClick={(e) => {
-          e.preventDefault();
-          toggleTheme();
-        }}
-        sx={{ color: (theme) => theme.palette.primary.main }}
-      >
-        Hello
-      </Button>
-    </Box>
+    <Container maxWidth={false} sx={{ m: 0, width: '100%', p: { xs: 0 } }}>
+      <HeroSection />
+    </Container>
   );
 };
 

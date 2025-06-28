@@ -12,12 +12,13 @@ const Navbar = () => {
         boxShadow: 'none',
         backdropFilter: 'blur(12px)',
       }}
+      component="nav"
     >
       <Toolbar
         sx={{
           justifyContent: 'space-between',
-          px: { xs: 4, sm: 6, lg: 8 },
-          maxWidth: '80rem',
+          px: { xs: 2, sm: 3, lg: 4 },
+          maxWidth: '1200px',
           mx: 'auto',
           width: '100%',
         }}

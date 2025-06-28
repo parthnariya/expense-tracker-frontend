@@ -1,3 +1,7 @@
 :root {
   box-sizing: border-box;
 }
+
+main {
+  padding: 0 !important;
+}
