@@ -44,6 +44,7 @@ const lightTheme = createTheme({
       '600': '#4b5563',
       '50': '#f9fafb',
       '100': '#f3f4f6',
+      '800': '#1f2937',
     },
     green: {
       '100': '#dcfce7',
@@ -97,6 +98,7 @@ const darkTheme = createTheme({
       '600': '#d1d5db',
       '50': '#1e293b',
       '100': '#334155',
+      '800': '#e5e7eb',
     },
     green: {
       '100': '#dcfce7',

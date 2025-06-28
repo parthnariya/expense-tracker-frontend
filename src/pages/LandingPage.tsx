@@ -1,5 +1,6 @@
 import { Container } from '@mui/material';
 
+import BenefitSection from '@/components/landingpage/BenefitSection';
 import FeatureSection from '@/components/landingpage/FeatureSection';
 import HeroSection from '@/components/landingpage/HeroSection';
 import StateSection from '@/components/landingpage/StateSection';
@@ -12,6 +13,8 @@ const LandingPage = () => {
       <FeatureSection />
 
       <StateSection />
+
+      <BenefitSection />
     </Container>
   );
 };

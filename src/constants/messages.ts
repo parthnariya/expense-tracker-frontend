@@ -90,3 +90,10 @@ export const MARKETING_STATS = [
     description: 'Users report better financial awareness',
   },
 ];
+
+export const BENEFITS = [
+  'Set up in under 30 seconds',
+  'No registration or personal info required',
+  'Start tracking transactions immediately',
+  'Access powerful analytics and insights',
+];
