@@ -45,4 +45,4 @@ export const CATEGORIES = {
     icon: 'TrendingUp',
     color: '#7C3AED',
   },
-};
+} as const;
