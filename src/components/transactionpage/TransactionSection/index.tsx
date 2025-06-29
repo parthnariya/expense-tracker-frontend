@@ -1,4 +1,5 @@
 import {
+  Box,
   Chip,
   Container,
   IconButton,
@@ -140,73 +141,106 @@ const TransactionSection = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}>
-        <TableContainer
-          sx={{
-            bgcolor: 'background.paper',
-            border: 1,
-            borderColor: 'grey.200',
-            borderRadius: 1.5,
-            boxShadow: 1,
-          }}
-        >
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableHeadCell>Date</TableHeadCell>
-                <TableHeadCell>Description</TableHeadCell>
-                <TableHeadCell>Category</TableHeadCell>
-                <TableHeadCell>Amount</TableHeadCell>
-                <TableHeadCell>Action</TableHeadCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {mockTransactions.map((transaction) => (
-                <TableBodyRow key={transaction.id}>
-                  <TableBodyCell>{formatDate(transaction.date)}</TableBodyCell>
-                  <TableBodyCell>{transaction.description}</TableBodyCell>
-                  <TableBodyCell>
-                    <Chip
-                      label={transaction.category}
-                      sx={{
-                        backgroundColor: getChipColor(
-                          transaction.category as TransactionCategoryType,
-                        ),
-                        textTransform: 'uppercase',
-                        fontWeight: 600,
-                      }}
-                    />
-                  </TableBodyCell>
-                  <TableBodyCell>
-                    <Typography
-                      color={
-                        transaction.type === 'expense' ? 'error' : 'success'
-                      }
-                      component="span"
-                    >
-                      {transaction.type === 'expense' ? '-' : '+'}
-                      {transaction.amount}
-                    </Typography>
-                  </TableBodyCell>
-                  <TableBodyCell>
-                    <Stack
-                      alignItems="center"
-                      direction="row"
-                      justifyContent="flex-start"
-                      spacing={1}
-                    >
-                      <IconButton color="warning">
-                        <Edit2 size={16} />
-                      </IconButton>
-                      <IconButton color="error">
-                        <Trash2 size={16} />
-                      </IconButton>
-                    </Stack>
-                  </TableBodyCell>
-                </TableBodyRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Box boxShadow={1}>
+          <Stack
+            alignItems={{ xs: 'flex-start', lg: 'center' }}
+            bgcolor="background.paper"
+            border={1}
+            borderBottom={0}
+            borderColor="grey.200"
+            direction={{ xs: 'column', lg: 'row' }}
+            justifyContent={{ xs: 'flex-start', lg: 'space-between' }}
+            p={2}
+          >
+            <Box>
+              <Typography
+                color="textPrimary"
+                component="h2"
+                fontWeight={600}
+                variant="h6"
+              >
+                Transactions
+              </Typography>
+
+              <Typography
+                color="textSecondary"
+                component="p"
+                variant="subtitle2"
+              >
+                30 transactions found
+              </Typography>
+            </Box>
+          </Stack>
+
+          <TableContainer
+            sx={{
+              bgcolor: 'background.paper',
+              border: 1,
+              borderColor: 'grey.200',
+              borderRadius: 1.5,
+            }}
+          >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableHeadCell>Date</TableHeadCell>
+                  <TableHeadCell>Description</TableHeadCell>
+                  <TableHeadCell>Category</TableHeadCell>
+                  <TableHeadCell>Amount</TableHeadCell>
+                  <TableHeadCell>Action</TableHeadCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {mockTransactions.map((transaction) => (
+                  <TableBodyRow key={transaction.id}>
+                    <TableBodyCell>
+                      {formatDate(transaction.date)}
+                    </TableBodyCell>
+                    <TableBodyCell>{transaction.description}</TableBodyCell>
+                    <TableBodyCell>
+                      <Chip
+                        label={transaction.category}
+                        sx={{
+                          backgroundColor: getChipColor(
+                            transaction.category as TransactionCategoryType,
+                          ),
+                          textTransform: 'uppercase',
+                          fontWeight: 600,
+                        }}
+                      />
+                    </TableBodyCell>
+                    <TableBodyCell>
+                      <Typography
+                        color={
+                          transaction.type === 'expense' ? 'error' : 'success'
+                        }
+                        component="span"
+                      >
+                        {transaction.type === 'expense' ? '-' : '+'}
+                        {transaction.amount}
+                      </Typography>
+                    </TableBodyCell>
+                    <TableBodyCell>
+                      <Stack
+                        alignItems="center"
+                        direction="row"
+                        justifyContent="flex-start"
+                        spacing={1}
+                      >
+                        <IconButton color="warning">
+                          <Edit2 size={16} />
+                        </IconButton>
+                        <IconButton color="error">
+                          <Trash2 size={16} />
+                        </IconButton>
+                      </Stack>
+                    </TableBodyCell>
+                  </TableBodyRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
       </Container>
     </Container>
   );
