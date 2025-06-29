@@ -4,6 +4,7 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  Pagination,
   Select,
   Stack,
   Typography,
@@ -94,6 +95,22 @@ const TransactionSection = () => {
           </Stack>
 
           <TransactionTable />
+          <Stack
+            alignItems="center"
+            direction="row"
+            justifyContent="center"
+            mt={1}
+            p={2}
+          >
+            <Pagination
+              color="primary"
+              count={12}
+              shape="rounded"
+              showFirstButton
+              showLastButton
+              size="medium"
+            />
+          </Stack>
         </Box>
       </Container>
     </Container>
