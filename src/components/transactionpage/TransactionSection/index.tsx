@@ -118,7 +118,7 @@ const mockTransactions = [
     description: 'Public Transport Monthly Pass',
   },
 ];
-const TransactionTable = () => {
+const TransactionSection = () => {
   const getChipColor = (category: TransactionCategoryType) => {
     if (CATEGORIES[category]) {
       return CATEGORIES[category].color;
@@ -171,6 +171,8 @@ const TransactionTable = () => {
                         backgroundColor: getChipColor(
                           transaction.category as TransactionCategoryType,
                         ),
+                        textTransform: 'uppercase',
+                        fontWeight: 600,
                       }}
                     />
                   </TableBodyCell>
@@ -192,7 +194,7 @@ const TransactionTable = () => {
                       justifyContent="flex-start"
                       spacing={1}
                     >
-                      <IconButton color="secondary">
+                      <IconButton color="warning">
                         <Edit2 size={16} />
                       </IconButton>
                       <IconButton color="error">
@@ -210,4 +212,4 @@ const TransactionTable = () => {
   );
 };
 
-export default TransactionTable;
+export default TransactionSection;
