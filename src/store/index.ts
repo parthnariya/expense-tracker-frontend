@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import spacesReducer from './slices/spacesSlice';
-import transactionsReducer from './slices/transactionsSlice';
+import spacesReducer from './slices/spaces/spacesSlice';
+import transactionsReducer from './slices/transactions/transactionsSlice';
 
 export const store = configureStore({
   reducer: {
