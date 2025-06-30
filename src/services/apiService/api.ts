@@ -1,3 +1,4 @@
+import { QueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -18,3 +19,12 @@ api.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      retry: 1,
+    },
+  },
+});
