@@ -3,7 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import DatePicker from '@/components/ui/DatePicker';
 
-const ExpenseDate = () => {
+const TransactionDate = () => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -31,4 +31,4 @@ const ExpenseDate = () => {
   );
 };
 
-export default ExpenseDate;
+export default TransactionDate;

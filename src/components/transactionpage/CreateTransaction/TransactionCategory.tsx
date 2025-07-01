@@ -3,7 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { CATEGORIES } from '@/constants/transaction';
 
-const ExpenseCategory = () => {
+const TransactionCategory = () => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -31,4 +31,4 @@ const ExpenseCategory = () => {
   );
 };
 
-export default ExpenseCategory;
+export default TransactionCategory;

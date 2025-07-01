@@ -2,13 +2,13 @@ import { Stack } from '@mui/material';
 import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
-import ExpenseAction from './ExpenseAction';
-import ExpenseAmount from './ExpenseAmount';
-import ExpenseCategory from './ExpenseCategory';
-import ExpenseDate from './ExpenseDate';
-import ExpenseDescription from './ExpenseDescription';
-import ExpenseTitle from './ExpenseTitle';
-import ExpenseTypeSelection from './ExpenseTypeSelection';
+import TransactionAction from './TransactionAction';
+import TransactionAmount from './TransactionAmount';
+import TransactionCategory from './TransactionCategory';
+import TransactionDate from './TransactionDate';
+import TransactionDescription from './TransactionDescription';
+import TransactionTitle from './TransactionTitle';
+import TransactionTypeSelection from './TransactionTypeSelection';
 
 import {
   useCreateTransaction,
@@ -86,13 +86,13 @@ const TransactionForm = ({
     <FormProvider {...formMethods}>
       <form onSubmit={formMethods.handleSubmit(onSubmit)}>
         <Stack p={3} spacing={3}>
-          <ExpenseTypeSelection />
-          <ExpenseTitle />
-          <ExpenseAmount />
-          <ExpenseCategory />
-          <ExpenseDate />
-          <ExpenseDescription />
-          <ExpenseAction
+          <TransactionTypeSelection />
+          <TransactionTitle />
+          <TransactionAmount />
+          <TransactionCategory />
+          <TransactionDate />
+          <TransactionDescription />
+          <TransactionAction
             isLoading={isPending || isUpdating}
             onCancel={handleCancel}
           />

@@ -2,12 +2,12 @@ import type { MouseEventHandler } from 'react';
 
 import { Button, Stack } from '@mui/material';
 
-type ExpenseActionProps = {
+type TransactionActionProps = {
   onCancel: () => void;
   isLoading: boolean;
 };
 
-const ExpenseAction = ({ onCancel, isLoading }: ExpenseActionProps) => {
+const TransactionAction = ({ onCancel, isLoading }: TransactionActionProps) => {
   const cancelClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
     onCancel();
@@ -37,4 +37,4 @@ const ExpenseAction = ({ onCancel, isLoading }: ExpenseActionProps) => {
   );
 };
 
-export default ExpenseAction;
+export default TransactionAction;

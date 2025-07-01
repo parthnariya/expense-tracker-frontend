@@ -9,7 +9,7 @@ import {
 import { IndianRupee } from 'lucide-react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const ExpenseAmount = () => {
+const TransactionAmount = () => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -44,4 +44,4 @@ const ExpenseAmount = () => {
   );
 };
 
-export default ExpenseAmount;
+export default TransactionAmount;

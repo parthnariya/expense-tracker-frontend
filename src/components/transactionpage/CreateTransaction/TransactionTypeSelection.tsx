@@ -2,7 +2,7 @@ import { Button, Stack } from '@mui/material';
 import { TrendingDown, TrendingUp } from 'lucide-react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const ExpenseTypeSelection = () => {
+const TransactionTypeSelection = () => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -34,4 +34,4 @@ const ExpenseTypeSelection = () => {
   );
 };
 
-export default ExpenseTypeSelection;
+export default TransactionTypeSelection;

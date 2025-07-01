@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, OutlinedInput } from '@mui/material';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const ExpenseTitle = () => {
+const TransactionTitle = () => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -18,4 +18,4 @@ const ExpenseTitle = () => {
   );
 };
 
-export default ExpenseTitle;
+export default TransactionTitle;
