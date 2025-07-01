@@ -4,7 +4,9 @@ import { useCreateSpace, useSpace } from '@/hooks/useSpaces';
 import { storageUtils } from '@/services/storageService/spaceStorage';
 
 const useSpaceInitialization = () => {
-  const [spaceId, setSpaceId] = useState<string | null>(null);
+  const [spaceId, setSpaceId] = useState<string | null>(
+    storageUtils.getSpaceId(),
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isReadyForRedirect, setIsReadyForRedirect] = useState(false);
