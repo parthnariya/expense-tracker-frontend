@@ -23,10 +23,15 @@ export const transactionsApi = {
       }
     });
 
-    const response = await api.get(
-      `/api/spaces/${spaceId}/transactions?${params}`,
-    );
-    return response.data;
+    if (params.size > 0) {
+      const response = await api.get(
+        `/api/spaces/${spaceId}/transactions?${params}`,
+      );
+      return response.data;
+    } else {
+      const response = await api.get(`/api/spaces/${spaceId}/transactions`);
+      return response.data;
+    }
   },
 
   getById: async (

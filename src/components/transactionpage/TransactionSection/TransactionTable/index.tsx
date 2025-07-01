@@ -33,9 +33,7 @@ const TransactionTable = () => {
       <Condition.ElseIf condition={isError}>
         <Typography color="error">Failed to load transactions.</Typography>
       </Condition.ElseIf>
-      <Condition.ElseIf
-        condition={!data || !Array.isArray(data) || data.length === 0}
-      >
+      <Condition.ElseIf condition={Number(data?.data.length) <= 0}>
         <Typography>No transactions found.</Typography>
       </Condition.ElseIf>
       <Condition.Else>

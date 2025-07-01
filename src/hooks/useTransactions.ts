@@ -32,9 +32,9 @@ export const useCreateTransaction = () => {
       spaceId: string;
       data: Partial<Transaction>;
     }) => transactionsApi.create(spaceId, data),
-    // onSuccess: (_, { spaceId }) => {
-    //   queryClient.invalidateQueries({ queryKey: ['transactions', spaceId] });
-    // },
+    onSuccess: (_, { spaceId }) => {
+      queryClient.invalidateQueries({ queryKey: ['transactions', spaceId] });
+    },
   });
 };
 

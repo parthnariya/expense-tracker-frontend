@@ -46,39 +46,48 @@ const TransactionPage = () => {
         maxWidth={false}
         sx={{ m: 0, width: '100%', height: '100%', p: { xs: 0 } }}
       >
-        <Condition>
-          <Condition.If condition={isLoading}>
-            <Stack
-              alignItems="center"
-              height="100%"
-              justifyContent="center"
-              width="100%"
-            >
-              <CircularProgress size={40} />
-              <Typography sx={{ mt: 2 }} variant="body1">
-                Loading space...
-              </Typography>
-            </Stack>
-          </Condition.If>
-          <Condition.ElseIf condition={isError || !spaceId}>
-            <Stack alignItems="center" gap={2} justifyContent="center">
-              <Typography color="error" variant="h6">
-                {!spaceId ? 'Invalid space ID' : 'Failed to load space'}
-              </Typography>
-              <Button
-                endIcon={<RotateCw size={16} />}
-                variant="contained"
-                onClick={handleRetry}
+        <Stack
+          alignItems="center"
+          height="100%"
+          justifyContent="center"
+          width="100%"
+        >
+          <Condition>
+            <Condition.If condition={isLoading}>
+              <Stack
+                alignItems="center"
+                height="100%"
+                justifyContent="center"
+                width="100%"
               >
-                Retry
-              </Button>
-            </Stack>
-          </Condition.ElseIf>
-        </Condition>
-        <SummaryCardsSection />
-        <TransactionSection />
+                <CircularProgress size={40} />
+                <Typography sx={{ mt: 2 }} variant="body1">
+                  Loading space...
+                </Typography>
+              </Stack>
+            </Condition.If>
+            <Condition.ElseIf condition={isError || !spaceId}>
+              <Stack alignItems="center" gap={2} justifyContent="center">
+                <Typography color="error" variant="h6">
+                  {!spaceId ? 'Invalid space ID' : 'Failed to load space'}
+                </Typography>
+                <Button
+                  endIcon={<RotateCw size={16} />}
+                  variant="contained"
+                  onClick={handleRetry}
+                >
+                  Retry
+                </Button>
+              </Stack>
+            </Condition.ElseIf>
+            <Condition.Else>
+              <SummaryCardsSection />
+              <TransactionSection />
+              <CreateTransactionFAB />
+            </Condition.Else>
+          </Condition>
+        </Stack>
       </Container>
-      <CreateTransactionFAB />
     </>
   );
 };
