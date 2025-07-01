@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import ExpenseAction from './ExpenseAction';
 import ExpenseAmount from './ExpenseAmount';
@@ -18,8 +19,39 @@ import ExpenseDescription from './ExpenseDescription';
 import ExpenseTitle from './ExpenseTitle';
 import ExpenseTypeSelection from './ExpenseTypeSelection';
 
-const CreateTransaction: React.FC = () => {
+interface CreateTransactionFormData {
+  type: 'income' | 'expense';
+  title: string;
+  amount: string;
+  category: string;
+  date: string;
+  description: string;
+}
+
+const CreateTransaction = () => {
   const [open, setOpen] = useState(false);
+
+  const { reset, handleSubmit } = useForm<CreateTransactionFormData>({
+    defaultValues: {
+      type: 'income',
+      title: '',
+      amount: '',
+      category: '',
+      date: '',
+      description: '',
+    },
+  });
+
+  const onSubmit: SubmitHandler<CreateTransactionFormData> = (data) => {
+    // eslint-disable-next-line
+    console.log('Form Data:', data);
+    // setOpen(false);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    reset();
+  };
 
   return (
     <>
@@ -80,21 +112,23 @@ const CreateTransaction: React.FC = () => {
         <DialogContent dividers sx={{ p: 0 }}>
           <Box mx="auto" p={{ xs: 2, sm: 2, lg: 3 }}>
             <Box borderRadius={1} boxShadow={1}>
-              <Stack p={3} spacing={3}>
-                <ExpenseTypeSelection />
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Stack p={3} spacing={3}>
+                  <ExpenseTypeSelection />
 
-                <ExpenseTitle />
+                  <ExpenseTitle />
 
-                <ExpenseAmount />
+                  <ExpenseAmount />
 
-                <ExpenseCategory />
+                  <ExpenseCategory />
 
-                <ExpenseDate />
+                  <ExpenseDate />
 
-                <ExpenseDescription />
+                  <ExpenseDescription />
 
-                <ExpenseAction />
-              </Stack>
+                  <ExpenseAction onCancel={handleClose} />
+                </Stack>
+              </form>
             </Box>
           </Box>
         </DialogContent>
