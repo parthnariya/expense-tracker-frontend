@@ -6,11 +6,13 @@ import {
   OutlinedInput,
 } from '@mui/material';
 import { IndianRupee } from 'lucide-react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 const ExpenseAmount = () => {
+  const { control } = useFormContext();
   return (
     <Controller
+      control={control}
       name="amount"
       render={({ field, fieldState }) => (
         <FormControl error={!!fieldState.error} fullWidth required size="small">

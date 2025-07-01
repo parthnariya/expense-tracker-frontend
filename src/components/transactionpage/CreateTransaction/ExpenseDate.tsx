@@ -22,7 +22,7 @@ const ExpenseDate = () => {
             }}
             {...field}
             value={field.value}
-            onChange={field.onChange}
+            onChange={(value) => field.onChange(value?.toISOString())}
           />
         </FormControl>
       )}
