@@ -10,6 +10,7 @@ import {
 import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
 
+import ExpenseAction from './ExpenseAction';
 import ExpenseAmount from './ExpenseAmount';
 import ExpenseCategory from './ExpenseCategory';
 import ExpenseDate from './ExpenseDate';
@@ -38,6 +39,7 @@ const CreateTransaction: React.FC = () => {
       <Dialog
         aria-describedby="create-transaction-modal-description"
         aria-labelledby="create-transaction-modal-title"
+        fullWidth
         open={open}
         scroll="paper"
         onClose={() => setOpen(false)}
@@ -76,15 +78,22 @@ const CreateTransaction: React.FC = () => {
           </Stack>
         </DialogTitle>
         <DialogContent dividers sx={{ p: 0 }}>
-          <Box maxWidth="sm" mx="auto" p={{ xs: 2, sm: 3, lg: 4 }}>
+          <Box mx="auto" p={{ xs: 2, sm: 2, lg: 3 }}>
             <Box borderRadius={1} boxShadow={1}>
               <Stack p={3} spacing={3}>
                 <ExpenseTypeSelection />
+
                 <ExpenseTitle />
+
                 <ExpenseAmount />
+
                 <ExpenseCategory />
+
                 <ExpenseDate />
+
                 <ExpenseDescription />
+
+                <ExpenseAction />
               </Stack>
             </Box>
           </Box>
