@@ -45,8 +45,12 @@ const TransactionFilters = () => {
         direction={{ xs: 'column', sm: 'row' }}
         spacing={1.5}
       >
-        <DatePicker />
-        <DatePicker />
+        <FormControl fullWidth size="small">
+          <DatePicker label="From" />
+        </FormControl>
+        <FormControl fullWidth size="small">
+          <DatePicker label="To" />
+        </FormControl>
       </Stack>
     </Stack>
   );
