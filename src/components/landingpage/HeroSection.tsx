@@ -1,9 +1,17 @@
 import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 import { TRUST_INDICATOR } from '@/constants/messages';
+import { ROUTE_PATHS } from '@/routes/paths';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleStartTracking = () => {
+    navigate(ROUTE_PATHS.SPACE_PAGE);
+  };
+
   return (
     <Container
       component="section"
@@ -77,7 +85,12 @@ const HeroSection = () => {
                 transactions with powerful insights. Make informed decisions
                 about your spending patterns and achieve your financial goals.
               </Typography>
-              <Button endIcon={<ArrowRight />} size="large" variant="contained">
+              <Button
+                endIcon={<ArrowRight />}
+                size="large"
+                variant="contained"
+                onClick={handleStartTracking}
+              >
                 Start Tracking
               </Button>
 

@@ -1,4 +1,5 @@
 export const ROUTE_PATHS = {
   LANDING_PAGE: '/',
-  TRANSACTION_PAGE: '/space',
+  SPACE_PAGE: '/space',
+  TRANSACTION_PAGE: '/space/:spaceId/transactions',
 };

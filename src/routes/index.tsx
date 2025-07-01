@@ -4,6 +4,7 @@ import { ROUTE_PATHS } from './paths';
 
 import RootLayout from '@/layouts/RootLayout';
 import LandingPage from '@/pages/LandingPage';
+import SpacePage from '@/pages/SpacePage';
 import TransactionPage from '@/pages/TransactionPage';
 
 const routes: RouteObject[] = [
@@ -15,6 +16,10 @@ const routes: RouteObject[] = [
         path: ROUTE_PATHS.LANDING_PAGE,
         element: <LandingPage />,
         index: true,
+      },
+      {
+        path: ROUTE_PATHS.SPACE_PAGE,
+        element: <SpacePage />,
       },
       {
         path: ROUTE_PATHS.TRANSACTION_PAGE,
