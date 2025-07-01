@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback } from 'react';
 
 import { useCreateSpace, useSpace } from '@/hooks/useSpaces';
 import { storageUtils } from '@/services/storageService/spaceStorage';
+import { useAppDispatch } from '@/store';
+import { setCurrentSpace } from '@/store/slices/spaces/spacesSlice';
 
 const useSpaceInitialization = () => {
   const [spaceId, setSpaceId] = useState<string | null>(
@@ -10,6 +12,8 @@ const useSpaceInitialization = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isReadyForRedirect, setIsReadyForRedirect] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   const {
     refetch: refetchSpace,
@@ -32,20 +36,24 @@ const useSpaceInitialization = () => {
     let currentSpaceId = storageUtils.getSpaceId();
 
     if (currentSpaceId) {
-      const { error: fetchError } = await refetchSpace();
+      const { error: fetchError, data } = await refetchSpace();
+      if (data) {
+        dispatch(setCurrentSpace(data.data));
+      }
       if (fetchError) {
         storageUtils.removeSpaceId();
         currentSpaceId = null;
       }
     }
 
-    if (!currentSpaceId) {
+    if (!currentSpaceId && !isCreating) {
       createSpace(undefined, {
         onSuccess: (data) => {
           storageUtils.setSpaceId(data.data.id);
           setSpaceId(data.data.id);
           setIsLoading(false);
           setIsReadyForRedirect(true);
+          dispatch(setCurrentSpace(data.data));
         },
         onError: () => {
           setError('Failed to initialize space. Please try again.');
@@ -58,7 +66,7 @@ const useSpaceInitialization = () => {
       setIsLoading(false);
       setIsReadyForRedirect(true);
     }
-  }, [createSpace, refetchSpace]);
+  }, [createSpace, refetchSpace, dispatch]);
 
   useEffect(() => {
     initializeSpace();

@@ -4,9 +4,10 @@ import { Button, Stack } from '@mui/material';
 
 type ExpenseActionProps = {
   onCancel: () => void;
+  isLoading: boolean;
 };
 
-const ExpenseAction = ({ onCancel }: ExpenseActionProps) => {
+const ExpenseAction = ({ onCancel, isLoading }: ExpenseActionProps) => {
   const cancelClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
     onCancel();
@@ -15,6 +16,7 @@ const ExpenseAction = ({ onCancel }: ExpenseActionProps) => {
   return (
     <Stack direction="row" justifyContent="end" spacing={0.5} width="100%">
       <Button
+        disabled={isLoading}
         size="medium"
         type="button"
         variant="outlined"
@@ -22,7 +24,13 @@ const ExpenseAction = ({ onCancel }: ExpenseActionProps) => {
       >
         Cancel
       </Button>
-      <Button size="medium" type="submit" variant="contained">
+      <Button
+        disabled={isLoading}
+        loading={isLoading}
+        size="medium"
+        type="submit"
+        variant="contained"
+      >
         Save
       </Button>
     </Stack>

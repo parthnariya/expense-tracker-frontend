@@ -1,5 +1,6 @@
 import {
   FormControl,
+  FormHelperText,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -18,6 +19,7 @@ const ExpenseAmount = () => {
         <FormControl error={!!fieldState.error} fullWidth required size="small">
           <InputLabel htmlFor="amount">Amount</InputLabel>
           <OutlinedInput
+            {...field}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton edge="end">
@@ -28,8 +30,10 @@ const ExpenseAmount = () => {
             id="amount"
             label="Amount"
             type="number"
-            {...field}
           />
+          {fieldState.error && (
+            <FormHelperText>{fieldState.error.message}</FormHelperText>
+          )}
         </FormControl>
       )}
       rules={{

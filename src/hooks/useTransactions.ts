@@ -1,8 +1,9 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 
 import type { TransactionFilters } from '@/services/apiService/transactionsApi';
 import type { Transaction } from '@/types';
 
+import { queryClient } from '@/services/apiService/api';
 import { transactionsApi } from '@/services/apiService/transactionsApi';
 
 export const useTransactions = (
@@ -23,7 +24,6 @@ export const useTransaction = (spaceId: string, transactionId: string) =>
   });
 
 export const useCreateTransaction = () => {
-  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({
       spaceId,
@@ -32,14 +32,13 @@ export const useCreateTransaction = () => {
       spaceId: string;
       data: Partial<Transaction>;
     }) => transactionsApi.create(spaceId, data),
-    onSuccess: (_, { spaceId }) => {
-      queryClient.invalidateQueries({ queryKey: ['transactions', spaceId] });
-    },
+    // onSuccess: (_, { spaceId }) => {
+    //   queryClient.invalidateQueries({ queryKey: ['transactions', spaceId] });
+    // },
   });
 };
 
 export const useUpdateTransaction = () => {
-  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({
       spaceId,
@@ -60,7 +59,6 @@ export const useUpdateTransaction = () => {
 };
 
 export const useDeleteTransaction = () => {
-  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({
       spaceId,

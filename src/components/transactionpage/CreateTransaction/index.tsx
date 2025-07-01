@@ -10,6 +10,7 @@ import {
 import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
 import { FormProvider, useForm, type SubmitHandler } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 
 import ExpenseAction from './ExpenseAction';
 import ExpenseAmount from './ExpenseAmount';
@@ -18,6 +19,9 @@ import ExpenseDate from './ExpenseDate';
 import ExpenseDescription from './ExpenseDescription';
 import ExpenseTitle from './ExpenseTitle';
 import ExpenseTypeSelection from './ExpenseTypeSelection';
+
+import { useCreateTransaction } from '@/hooks/useTransactions';
+import { selectCurrentSpace } from '@/store/slices/spaces/spaceSelectors';
 
 interface CreateTransactionFormData {
   type: 'income' | 'expense';
@@ -31,11 +35,15 @@ interface CreateTransactionFormData {
 const CreateTransaction = () => {
   const [open, setOpen] = useState(false);
 
+  const currentSpace = useSelector(selectCurrentSpace);
+
+  const { mutate: createTransaction, isPending } = useCreateTransaction();
+
   const formMethods = useForm<CreateTransactionFormData>({
     defaultValues: {
       type: 'income',
       title: '',
-      amount: 0,
+      amount: -1,
       category: '',
       date: undefined,
       description: '',
@@ -43,8 +51,15 @@ const CreateTransaction = () => {
   });
 
   const onSubmit: SubmitHandler<CreateTransactionFormData> = (data) => {
-    // eslint-disable-next-line
-    console.log('Form Data:', data);
+    if (!currentSpace) {
+      return;
+    }
+    const spaceId = currentSpace.id;
+
+    createTransaction({
+      spaceId,
+      data,
+    });
     // setOpen(false);
   };
 
@@ -131,7 +146,10 @@ const CreateTransaction = () => {
 
                     <ExpenseDescription />
 
-                    <ExpenseAction onCancel={handleClose} />
+                    <ExpenseAction
+                      isLoading={isPending}
+                      onCancel={handleClose}
+                    />
                   </Stack>
                 </form>
               </FormProvider>
