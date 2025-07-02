@@ -37,6 +37,12 @@ export const useCreateTransaction = () => {
       queryClient.invalidateQueries({
         queryKey: ['transactionSummary', spaceId],
       });
+      queryClient.invalidateQueries({
+        queryKey: ['categoryAnalytics', spaceId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['trendData', spaceId],
+      });
     },
   });
 };
@@ -60,6 +66,12 @@ export const useUpdateTransaction = () => {
       queryClient.invalidateQueries({
         queryKey: ['transactionSummary', spaceId],
       });
+      queryClient.invalidateQueries({
+        queryKey: ['categoryAnalytics', spaceId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['trendData', spaceId],
+      });
     },
   });
 };
@@ -78,6 +90,12 @@ export const useDeleteTransaction = () => {
       queryClient.invalidateQueries({
         queryKey: ['transactionSummary', spaceId],
       });
+      queryClient.invalidateQueries({
+        queryKey: ['categoryAnalytics', spaceId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['trendData', spaceId],
+      });
     },
   });
 };
@@ -86,5 +104,19 @@ export const useTransactionSummary = (spaceId: string) =>
   useQuery({
     queryKey: ['transactionSummary', spaceId],
     queryFn: () => transactionsApi.getSummary(spaceId),
+    enabled: !!spaceId,
+  });
+
+export const useCategoryAnalytics = (spaceId: string) =>
+  useQuery({
+    queryKey: ['categoryAnalytics', spaceId],
+    queryFn: () => transactionsApi.getCategoryAnalytics(spaceId),
+    enabled: !!spaceId,
+  });
+
+export const useTrendData = (spaceId: string) =>
+  useQuery({
+    queryKey: ['trendData', spaceId],
+    queryFn: () => transactionsApi.getTrendData(spaceId),
     enabled: !!spaceId,
   });

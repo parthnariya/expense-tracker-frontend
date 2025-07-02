@@ -21,3 +21,17 @@ export type TransactionSummary = {
   totalIncome: number;
   totalExpense: number;
 };
+
+export type CategoryAnalytics = {
+  category: string;
+  totalAmount: number;
+  transactionCount: number;
+  percentage: number;
+};
+
+export type TrendData = {
+  date: string;
+  income: number;
+  expense: number;
+  balance: number;
+};

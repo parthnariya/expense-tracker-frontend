@@ -1,6 +1,11 @@
 import { api } from './api';
 
-import type { Transaction, ApiResponse, TransactionSummary } from '@/types';
+import type {
+  Transaction,
+  ApiResponse,
+  TransactionSummary,
+  CategoryAnalytics,
+} from '@/types';
 
 export interface TransactionFilters {
   type?: 'income' | 'expense';
@@ -82,6 +87,36 @@ export const transactionsApi = {
   ): Promise<ApiResponse<TransactionSummary>> => {
     const response = await api.get(
       `/api/spaces/${spaceId}/transactions/summary`,
+    );
+    return response.data;
+  },
+
+  getCategoryAnalytics: async (
+    spaceId: string,
+  ): Promise<ApiResponse<CategoryAnalytics[]>> => {
+    const response = await api.get(
+      `/api/spaces/${spaceId}/transactions/analytics/categories`,
+    );
+    return response.data;
+  },
+
+  getTrendData: async (
+    spaceId: string,
+  ): Promise<ApiResponse<Transaction[]>> => {
+    const filters: TransactionFilters = {
+      page: 1,
+      limit: 30,
+    };
+
+    const params = new URLSearchParams();
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value !== undefined) {
+        params.append(key, value.toString());
+      }
+    });
+
+    const response = await api.get(
+      `/api/spaces/${spaceId}/transactions?${params}`,
     );
     return response.data;
   },
