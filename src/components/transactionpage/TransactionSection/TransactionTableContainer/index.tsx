@@ -1,34 +1,34 @@
 import { Button, CircularProgress, Stack, Typography } from '@mui/material';
 import { InfoIcon, PlusIcon, RefreshCcwIcon } from 'lucide-react';
 import { useState, type MouseEventHandler } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 import TransactionModal from '../../CreateTransaction/TransactionModal';
 
 import TransactionTable from './TransactionTable';
 
+import type { Transaction } from '@/types';
+
 import Condition from '@/components/ui/Condition';
-import { useTransactions } from '@/hooks/useTransactions';
 import { ROUTE_PATHS } from '@/routes/paths';
-import { selectCurrentSpace } from '@/store/slices/spaces/spaceSelectors';
 
-const TransactionTableContainer = () => {
+interface TransactionTableContainerProps {
+  transactions: Transaction[];
+  isLoading: boolean;
+  isError: boolean;
+}
+
+const TransactionTableContainer = ({
+  transactions,
+  isLoading,
+  isError,
+}: TransactionTableContainerProps) => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-
-  const currentSpace = useSelector(selectCurrentSpace);
-  const spaceId = currentSpace?.id;
-  const { data, isLoading, isError, refetch } = useTransactions(spaceId || '');
   const navigate = useNavigate();
 
   const handleRefresh: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     navigate(ROUTE_PATHS.SPACE_PAGE);
-  };
-
-  const handleRefetch: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault();
-    refetch();
   };
 
   const handleCreateTask: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -44,12 +44,15 @@ const TransactionTableContainer = () => {
     <>
       <TransactionModal open={isCreateModalOpen} onClose={handleClose} />
       <Condition>
-        <Condition.If condition={!spaceId}>
+        <Condition.If condition={isLoading}>
           <Stack alignItems="center" justifyContent="center" minHeight={300}>
-            <Typography>
-              <InfoIcon />
-            </Typography>
-            <Typography>No space selected.</Typography>
+            <CircularProgress />
+            <Typography>Loading transactions...</Typography>
+          </Stack>
+        </Condition.If>
+        <Condition.ElseIf condition={isError}>
+          <Stack alignItems="center" justifyContent="center" minHeight={300}>
+            <Typography color="error">Failed to load transactions.</Typography>
             <Button
               color="primary"
               endIcon={<RefreshCcwIcon size={18} />}
@@ -59,27 +62,8 @@ const TransactionTableContainer = () => {
               Try Again
             </Button>
           </Stack>
-        </Condition.If>
-        <Condition.ElseIf condition={isLoading}>
-          <Stack alignItems="center" justifyContent="center" minHeight={300}>
-            <CircularProgress />
-            <Typography>Loading transactions...</Typography>
-          </Stack>
         </Condition.ElseIf>
-        <Condition.ElseIf condition={isError}>
-          <Stack alignItems="center" justifyContent="center" minHeight={300}>
-            <Typography color="error">Failed to load transactions.</Typography>
-            <Button
-              color="primary"
-              endIcon={<RefreshCcwIcon size={18} />}
-              variant="contained"
-              onClick={handleRefetch}
-            >
-              Try Again
-            </Button>
-          </Stack>
-        </Condition.ElseIf>
-        <Condition.ElseIf condition={Number(data?.data.length) <= 0}>
+        <Condition.ElseIf condition={Number(transactions.length) <= 0}>
           <Stack alignItems="center" justifyContent="center" minHeight={300}>
             <Typography>
               <InfoIcon />
@@ -96,7 +80,7 @@ const TransactionTableContainer = () => {
           </Stack>
         </Condition.ElseIf>
         <Condition.Else>
-          <TransactionTable transactions={data?.data || []} />
+          <TransactionTable transactions={transactions} />
         </Condition.Else>
       </Condition>
     </>
