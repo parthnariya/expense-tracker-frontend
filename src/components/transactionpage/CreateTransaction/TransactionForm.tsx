@@ -27,7 +27,7 @@ export interface TransactionFormData {
 
 interface TransactionFormProps {
   mode?: 'create' | 'edit';
-  defaultValues?: TransactionFormData;
+  defaultValues?: Partial<TransactionFormData>;
   transactionId?: string;
   onSuccess?: () => void;
   onCancel?: () => void;

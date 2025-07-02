@@ -45,7 +45,11 @@ const TransactionTableRow = ({ transaction }: TransactionTableRowProps) => (
         justifyContent="flex-start"
         spacing={1}
       >
-        <IconButton color="warning">
+        <IconButton
+          color="warning"
+          data-action="edit"
+          data-transaction-id={transaction.id}
+        >
           <Edit2 size={16} />
         </IconButton>
         <IconButton

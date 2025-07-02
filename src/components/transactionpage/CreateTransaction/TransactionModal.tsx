@@ -12,7 +12,7 @@ import TransactionForm, { type TransactionFormData } from './TransactionForm';
 
 type TransactionModalProps = {
   mode?: 'create' | 'edit';
-  defaultValues?: TransactionFormData;
+  defaultValues?: Partial<TransactionFormData>;
   open: boolean;
   transactionId?: string;
   onClose?: () => void;

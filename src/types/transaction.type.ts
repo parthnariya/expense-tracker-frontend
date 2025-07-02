@@ -11,7 +11,7 @@ export type Transaction = {
   description?: string;
   amount: number;
   type: 'income' | 'expense';
-  category?: string;
+  category: string;
   date: string;
   createdAt: string;
   updatedAt: string;

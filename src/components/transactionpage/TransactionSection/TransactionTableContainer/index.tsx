@@ -30,6 +30,8 @@ const TransactionTableContainer = ({
   refetch,
 }: TransactionTableContainerProps) => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [editTransactionData, setEditTransactionData] =
+    useState<Transaction | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const navigate = useNavigate();
@@ -50,6 +52,18 @@ const TransactionTableContainer = ({
 
   const handleClose = () => {
     setIsCreateModalOpen(false);
+  };
+
+  const handleEditRequest = (transactionId: string) => {
+    const transaction = transactions.find((tx) => tx.id === transactionId);
+    if (transaction) {
+      setEditTransactionData(transaction);
+    }
+  };
+
+  const handleEditModalClose = () => {
+    refetch();
+    setEditTransactionData(null);
   };
 
   const handleDeleteRequest = (transactionId: string) => {
@@ -75,6 +89,22 @@ const TransactionTableContainer = ({
   return (
     <>
       <TransactionModal open={isCreateModalOpen} onClose={handleClose} />
+      {Boolean(editTransactionData) && (
+        <TransactionModal
+          defaultValues={{
+            type: editTransactionData?.type,
+            title: editTransactionData?.title,
+            amount: editTransactionData?.amount,
+            category: editTransactionData?.category,
+            date: editTransactionData?.date,
+            description: editTransactionData?.description || '',
+          }}
+          mode="edit"
+          open={Boolean(editTransactionData)}
+          transactionId={editTransactionData?.id}
+          onClose={handleEditModalClose}
+        />
+      )}
       <DeleteConfirmModal
         loading={isDeleting}
         open={isConfirmOpen}
@@ -121,6 +151,7 @@ const TransactionTableContainer = ({
           <TransactionTable
             transactions={transactions}
             onDeleteRequest={handleDeleteRequest}
+            onEditRequest={handleEditRequest}
           />
         </Condition.Else>
       </Condition>

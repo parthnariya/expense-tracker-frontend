@@ -1,4 +1,5 @@
 import { FormControl } from '@mui/material';
+import dayjs from 'dayjs';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import DatePicker from '@/components/ui/DatePicker';
@@ -21,7 +22,7 @@ const TransactionDate = () => {
               },
             }}
             {...field}
-            value={field.value}
+            value={field.value ? dayjs(field.value) : null}
             onChange={(value) => field.onChange(value?.toISOString())}
           />
         </FormControl>
