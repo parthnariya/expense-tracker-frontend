@@ -4,6 +4,7 @@ import {
   MenuItem,
   Select,
   Stack,
+  Paper,
 } from '@mui/material';
 import dayjs from 'dayjs';
 
@@ -19,13 +20,19 @@ interface TransactionFiltersProps {
 
 const TransactionFilters = ({ filters, onChange }: TransactionFiltersProps) => {
   return (
-    <Stack direction={{ xs: 'column', lg: 'row' }} spacing={1.5}>
+    <Paper elevation={0} sx={{ p: 2, mb: 2, width: '100%' }}>
       <Stack
-        alignItems={{ xs: 'flex-start', sm: 'center' }}
-        direction={{ xs: 'column', sm: 'row' }}
-        spacing={1.5}
+        alignItems="center"
+        direction={{ xs: 'column', md: 'row' }}
+        justifyContent="flex-start"
+        spacing={2}
+        width="100%"
       >
-        <FormControl fullWidth size="small" sx={{ minWidth: 110 }}>
+        <FormControl
+          fullWidth
+          size="small"
+          sx={{ minWidth: { xs: '100%', md: 120 }, flex: 1 }}
+        >
           <InputLabel id="type-select-label">Type</InputLabel>
           <Select
             id="type-select"
@@ -43,7 +50,11 @@ const TransactionFilters = ({ filters, onChange }: TransactionFiltersProps) => {
             <MenuItem value="income">Income</MenuItem>
           </Select>
         </FormControl>
-        <FormControl fullWidth size="small" sx={{ minWidth: 150 }}>
+        <FormControl
+          fullWidth
+          size="small"
+          sx={{ minWidth: { xs: '100%', md: 150 }, flex: 2 }}
+        >
           <InputLabel id="category-select-label">Category</InputLabel>
           <Select
             id="category-select"
@@ -64,13 +75,11 @@ const TransactionFilters = ({ filters, onChange }: TransactionFiltersProps) => {
             ))}
           </Select>
         </FormControl>
-      </Stack>
-      <Stack
-        alignItems={{ xs: 'flex-start', sm: 'center' }}
-        direction={{ xs: 'column', sm: 'row' }}
-        spacing={1.5}
-      >
-        <FormControl fullWidth size="small">
+        <FormControl
+          fullWidth
+          size="small"
+          sx={{ minWidth: { xs: '100%', md: 140 }, flex: 1 }}
+        >
           <DatePicker
             label="From"
             value={dayjs(filters.startDate) || null}
@@ -79,7 +88,11 @@ const TransactionFilters = ({ filters, onChange }: TransactionFiltersProps) => {
             }
           />
         </FormControl>
-        <FormControl fullWidth size="small">
+        <FormControl
+          fullWidth
+          size="small"
+          sx={{ minWidth: { xs: '100%', md: 140 }, flex: 1 }}
+        >
           <DatePicker
             label="To"
             value={dayjs(filters.endDate) || null}
@@ -89,7 +102,7 @@ const TransactionFilters = ({ filters, onChange }: TransactionFiltersProps) => {
           />
         </FormControl>
       </Stack>
-    </Stack>
+    </Paper>
   );
 };
 
