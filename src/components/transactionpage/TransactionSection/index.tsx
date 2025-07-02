@@ -1,7 +1,7 @@
 import { Box, Container, Pagination, Stack, Typography } from '@mui/material';
 
 import TransactionFilters from './TransactionFilters';
-import TransactionTable from './TransactionTable';
+import TransactionTable from './TransactionTableContainer';
 
 const TransactionSection = () => {
   return (

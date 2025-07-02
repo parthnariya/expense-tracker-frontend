@@ -1,14 +1,4 @@
-import {
-  Button,
-  CircularProgress,
-  Stack,
-  Table,
-  TableBody,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-} from '@mui/material';
+import { Button, CircularProgress, Stack, Typography } from '@mui/material';
 import { InfoIcon, PlusIcon, RefreshCcwIcon } from 'lucide-react';
 import { useState, type MouseEventHandler } from 'react';
 import { useSelector } from 'react-redux';
@@ -16,17 +6,14 @@ import { useNavigate } from 'react-router';
 
 import TransactionModal from '../../CreateTransaction/TransactionModal';
 
-import TransactionTableRow from './TransactionTableRow';
-
-import type { Transaction } from '@/types';
+import TransactionTable from './TransactionTable';
 
 import Condition from '@/components/ui/Condition';
-import TableHeadCell from '@/components/ui/Table/TableHeadCell';
 import { useTransactions } from '@/hooks/useTransactions';
 import { ROUTE_PATHS } from '@/routes/paths';
 import { selectCurrentSpace } from '@/store/slices/spaces/spaceSelectors';
 
-const TransactionTable = () => {
+const TransactionTableContainer = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const currentSpace = useSelector(selectCurrentSpace);
@@ -109,38 +96,11 @@ const TransactionTable = () => {
           </Stack>
         </Condition.ElseIf>
         <Condition.Else>
-          <TableContainer
-            sx={{
-              bgcolor: 'background.paper',
-              border: 1,
-              borderColor: 'grey.200',
-              borderRadius: 1.5,
-            }}
-          >
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableHeadCell>Date</TableHeadCell>
-                  <TableHeadCell>Description</TableHeadCell>
-                  <TableHeadCell>Category</TableHeadCell>
-                  <TableHeadCell>Amount</TableHeadCell>
-                  <TableHeadCell>Action</TableHeadCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data?.data.map((transaction: Transaction) => (
-                  <TransactionTableRow
-                    key={transaction.id}
-                    transaction={transaction}
-                  />
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <TransactionTable transactions={data?.data || []} />
         </Condition.Else>
       </Condition>
     </>
   );
 };
 
-export default TransactionTable;
+export default TransactionTableContainer;

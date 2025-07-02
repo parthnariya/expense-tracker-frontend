@@ -1,7 +1,7 @@
 import { Chip, IconButton, Stack, Typography } from '@mui/material';
 import { Edit2, Trash2 } from 'lucide-react';
 
-import { getChipColor } from '../../utils';
+import { getChipColor } from '../../../utils';
 
 import type { Transaction, TransactionCategoryType } from '@/types';
 
