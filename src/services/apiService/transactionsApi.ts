@@ -93,9 +93,9 @@ export const transactionsApi = {
 
   getCategoryAnalytics: async (
     spaceId: string,
-  ): Promise<ApiResponse<CategoryAnalytics[]>> => {
+  ): Promise<ApiResponse<CategoryAnalytics>> => {
     const response = await api.get(
-      `/api/spaces/${spaceId}/transactions/analytics/categories`,
+      `/api/spaces/${spaceId}/transactions/category-spending`,
     );
     return response.data;
   },

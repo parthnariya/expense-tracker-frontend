@@ -22,8 +22,15 @@ export type TransactionSummary = {
   totalExpense: number;
 };
 
-export type CategoryAnalytics = {
+export type CategorySpending = {
   category: string;
+  totalAmount: number;
+  transactionCount: number;
+  percentage: number;
+};
+
+export type CategoryAnalytics = {
+  categories: CategorySpending[];
   totalAmount: number;
   transactionCount: number;
   percentage: number;
