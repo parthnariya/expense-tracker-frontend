@@ -48,7 +48,11 @@ const TransactionTableRow = ({ transaction }: TransactionTableRowProps) => (
         <IconButton color="warning">
           <Edit2 size={16} />
         </IconButton>
-        <IconButton color="error">
+        <IconButton
+          color="error"
+          data-action="delete"
+          data-transaction-id={transaction.id}
+        >
           <Trash2 size={16} />
         </IconButton>
       </Stack>

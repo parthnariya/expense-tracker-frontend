@@ -14,9 +14,25 @@ import TableHeadCell from '@/components/ui/Table/TableHeadCell';
 
 type TransactionTablePropsType = {
   transactions: Transaction[];
+  onDeleteRequest?: (transactionId: string) => void;
 };
 
-const TransactionTable = ({ transactions }: TransactionTablePropsType) => {
+const TransactionTable = ({
+  transactions,
+  onDeleteRequest,
+}: TransactionTablePropsType) => {
+  const handleTableBodyClick = (
+    event: React.MouseEvent<HTMLTableSectionElement>,
+  ) => {
+    const target = event.target as HTMLElement;
+    const button = target.closest(
+      'button[data-action="delete"]',
+    ) as HTMLButtonElement | null;
+    if (button && button.dataset.transactionId && onDeleteRequest) {
+      onDeleteRequest(button.dataset.transactionId);
+    }
+  };
+
   return (
     <TableContainer
       sx={{
@@ -36,7 +52,7 @@ const TransactionTable = ({ transactions }: TransactionTablePropsType) => {
             <TableHeadCell>Action</TableHeadCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody onClick={handleTableBodyClick}>
           {transactions.map((transaction) => (
             <TransactionTableRow
               key={transaction.id}

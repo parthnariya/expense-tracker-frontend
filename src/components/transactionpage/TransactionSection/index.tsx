@@ -24,7 +24,10 @@ const TransactionSection = () => {
   const currentSpace = useSelector(selectCurrentSpace);
   const spaceId = currentSpace?.id;
 
-  const { data, isLoading, isError } = useTransactions(spaceId || '', filters);
+  const { data, isLoading, isError, refetch } = useTransactions(
+    spaceId || '',
+    filters,
+  );
 
   const handleFilterChange = (changed: Partial<FiltersType>) => {
     setFilters((prev) => ({ ...prev, ...changed, page: 1 }));
@@ -35,6 +38,10 @@ const TransactionSection = () => {
 
   const totalPages = Number(data?.meta?.pagination?.totalPages) || 1;
   const totalCount = Number(data?.meta?.pagination?.total) || 0;
+
+  const handleRefetch = () => {
+    refetch();
+  };
 
   return (
     <Container
@@ -90,6 +97,7 @@ const TransactionSection = () => {
           <TransactionTable
             isError={isError}
             isLoading={isLoading}
+            refetch={handleRefetch}
             transactions={data?.data || []}
           />
           <TransactionPagination
