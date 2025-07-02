@@ -21,6 +21,7 @@ const AnalyticsSection = () => {
           bgcolor="background.paper"
           border={1}
           borderColor="grey.200"
+          borderRadius={1.5}
           p={2}
           spacing={2}
         >

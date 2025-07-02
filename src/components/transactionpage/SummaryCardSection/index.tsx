@@ -56,7 +56,7 @@ const SummaryCardsSection = () => {
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, lg: 4 }, mx: 'auto' }}>
         <Box flexGrow={1}>
-          <Grid container p={2} spacing={2}>
+          <Grid container p={2} px={0} spacing={2}>
             <Condition>
               <Condition.If condition={isLoading}>
                 <LoadingSummaryCard />

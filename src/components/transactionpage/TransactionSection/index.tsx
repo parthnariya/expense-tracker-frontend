@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import TransactionFilters from './TransactionFilters';
 import TransactionPagination from './TransactionPagination';
-import TransactionTable from './TransactionTableContainer';
+import TransactionTableContainer from './TransactionTableContainer';
 
 import type { TransactionFilters as FiltersType } from '@/services/apiService/transactionsApi';
 
@@ -94,7 +94,7 @@ const TransactionSection = () => {
             />
           </Stack>
 
-          <TransactionTable
+          <TransactionTableContainer
             isError={isError}
             isLoading={isLoading}
             refetch={handleRefetch}

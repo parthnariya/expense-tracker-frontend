@@ -113,13 +113,29 @@ const TransactionTableContainer = ({
       />
       <Condition>
         <Condition.If condition={isLoading}>
-          <Stack alignItems="center" justifyContent="center" minHeight={300}>
+          <Stack
+            alignItems="center"
+            bgcolor="background.paper"
+            border={1}
+            borderColor="grey.200"
+            borderRadius={1.5}
+            justifyContent="center"
+            minHeight={300}
+          >
             <CircularProgress />
             <Typography>Loading transactions...</Typography>
           </Stack>
         </Condition.If>
         <Condition.ElseIf condition={isError}>
-          <Stack alignItems="center" justifyContent="center" minHeight={300}>
+          <Stack
+            alignItems="center"
+            bgcolor="background.paper"
+            border={1}
+            borderColor="grey.200"
+            borderRadius={1.5}
+            justifyContent="center"
+            minHeight={300}
+          >
             <Typography color="error">Failed to load transactions.</Typography>
             <Button
               color="primary"
@@ -132,7 +148,15 @@ const TransactionTableContainer = ({
           </Stack>
         </Condition.ElseIf>
         <Condition.ElseIf condition={Number(transactions.length) <= 0}>
-          <Stack alignItems="center" justifyContent="center" minHeight={300}>
+          <Stack
+            alignItems="center"
+            bgcolor="background.paper"
+            border={1}
+            borderColor="grey.200"
+            borderRadius={1.5}
+            justifyContent="center"
+            minHeight={300}
+          >
             <Typography>
               <InfoIcon />
             </Typography>
