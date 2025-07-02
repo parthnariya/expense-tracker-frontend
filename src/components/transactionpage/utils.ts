@@ -5,8 +5,9 @@ import type { TransactionCategoryType, TransactionType } from '@/types';
 import { CATEGORIES } from '@/constants/transaction';
 
 export const getChipColor = (category: string) => {
-  if (Object.hasOwn(CATEGORIES, category)) {
-    return CATEGORIES[category as TransactionCategoryType].color;
+  const key = category.toLowerCase();
+  if (Object.hasOwn(CATEGORIES, key)) {
+    return CATEGORIES[key as TransactionCategoryType].color;
   }
   return '#fff';
 };

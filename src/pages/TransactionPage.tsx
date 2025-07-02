@@ -9,6 +9,7 @@ import { RotateCw } from 'lucide-react';
 import { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router';
 
+import AnalyticsSection from '@/components/transactionpage/AnalyticsSection';
 import CreateTransactionFAB from '@/components/transactionpage/CreateTransaction';
 import SummaryCardsSection from '@/components/transactionpage/SummaryCardSection';
 import TransactionSection from '@/components/transactionpage/TransactionSection';
@@ -82,6 +83,7 @@ const TransactionPage = () => {
             </Condition.ElseIf>
             <Condition.Else>
               <SummaryCardsSection />
+              <AnalyticsSection />
               <TransactionSection />
               <CreateTransactionFAB />
             </Condition.Else>
