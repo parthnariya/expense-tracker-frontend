@@ -34,6 +34,9 @@ export const useCreateTransaction = () => {
     }) => transactionsApi.create(spaceId, data),
     onSuccess: (_, { spaceId }) => {
       queryClient.invalidateQueries({ queryKey: ['transactions', spaceId] });
+      queryClient.invalidateQueries({
+        queryKey: ['transactionSummary', spaceId],
+      });
     },
   });
 };
@@ -54,6 +57,9 @@ export const useUpdateTransaction = () => {
       queryClient.invalidateQueries({
         queryKey: ['transaction', spaceId, transactionId],
       });
+      queryClient.invalidateQueries({
+        queryKey: ['transactionSummary', spaceId],
+      });
     },
   });
 };
@@ -69,6 +75,16 @@ export const useDeleteTransaction = () => {
     }) => transactionsApi.delete(spaceId, transactionId),
     onSuccess: (_, { spaceId }) => {
       queryClient.invalidateQueries({ queryKey: ['transactions', spaceId] });
+      queryClient.invalidateQueries({
+        queryKey: ['transactionSummary', spaceId],
+      });
     },
   });
 };
+
+export const useTransactionSummary = (spaceId: string) =>
+  useQuery({
+    queryKey: ['transactionSummary', spaceId],
+    queryFn: () => transactionsApi.getSummary(spaceId),
+    enabled: !!spaceId,
+  });

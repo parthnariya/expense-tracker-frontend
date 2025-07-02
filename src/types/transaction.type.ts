@@ -16,3 +16,8 @@ export type Transaction = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type TransactionSummary = {
+  totalIncome: number;
+  totalExpense: number;
+};

@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router';
 
 import CreateTransactionFAB from '@/components/transactionpage/CreateTransaction';
-import SummaryCardsSection from '@/components/transactionpage/SummaryCardsSection';
+import SummaryCardsSection from '@/components/transactionpage/SummaryCardSection';
 import TransactionSection from '@/components/transactionpage/TransactionSection';
 import Condition from '@/components/ui/Condition';
 import { useSpace } from '@/hooks/useSpaces';
@@ -49,7 +49,7 @@ const TransactionPage = () => {
         <Stack
           alignItems="center"
           height="100%"
-          justifyContent="center"
+          justifyContent="flex-start"
           width="100%"
         >
           <Condition>

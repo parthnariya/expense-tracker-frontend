@@ -1,6 +1,6 @@
 import { api } from './api';
 
-import type { Transaction, ApiResponse } from '@/types';
+import type { Transaction, ApiResponse, TransactionSummary } from '@/types';
 
 export interface TransactionFilters {
   type?: 'income' | 'expense';
@@ -73,6 +73,15 @@ export const transactionsApi = {
   ): Promise<ApiResponse<{ message: string }>> => {
     const response = await api.delete(
       `/api/spaces/${spaceId}/transactions/${transactionId}`,
+    );
+    return response.data;
+  },
+
+  getSummary: async (
+    spaceId: string,
+  ): Promise<ApiResponse<TransactionSummary>> => {
+    const response = await api.get(
+      `/api/spaces/${spaceId}/transactions/summary`,
     );
     return response.data;
   },
