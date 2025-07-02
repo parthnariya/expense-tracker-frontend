@@ -6,6 +6,7 @@ import {
 
 import type { ApiResponse, Space } from '@/types';
 
+import { createQueryKey } from '@/constants/queries';
 import { spacesApi } from '@/services/apiService/spacesApi';
 
 export const useCreateSpace = ({
@@ -30,7 +31,7 @@ type OptionType = Partial<
 
 export const useSpace = (id: string, options?: OptionType) =>
   useQuery({
-    queryKey: ['space', id],
+    queryKey: createQueryKey.space(id),
     queryFn: () => spacesApi.getById(id),
     enabled: !!id,
     ...options,
