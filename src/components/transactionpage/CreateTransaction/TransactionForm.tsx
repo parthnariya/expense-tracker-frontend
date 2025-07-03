@@ -50,12 +50,17 @@ const TransactionForm = ({
     defaultValues: {
       type: defaultValues?.type || 'income',
       title: defaultValues?.title || '',
-      amount: defaultValues?.amount || -1,
+      amount: defaultValues?.amount || 0,
       category: defaultValues?.category || '',
       date: defaultValues?.date || undefined,
       description: defaultValues?.description || '',
     },
   });
+
+  const handleCancel = () => {
+    formMethods.reset();
+    onCancel?.();
+  };
 
   const onSubmit: SubmitHandler<TransactionFormData> = (data) => {
     if (!currentSpace) {
@@ -63,23 +68,38 @@ const TransactionForm = ({
     }
     const spaceId = currentSpace.id;
 
-    if (mode === 'create') {
-      createTransaction({
-        spaceId,
-        data,
-      });
-    } else if (mode === 'edit' && transactionId) {
-      updateTransaction({
-        spaceId,
-        transactionId,
-        data,
-      });
-    }
-  };
+    const numberAmount = Number.isNaN(Number(data.amount))
+      ? 0
+      : Number(data.amount);
 
-  const handleCancel = () => {
-    formMethods.reset();
-    onCancel?.();
+    const formData = { ...data, amount: numberAmount };
+
+    if (mode === 'create') {
+      createTransaction(
+        {
+          spaceId,
+          data: formData,
+        },
+        {
+          onSuccess: () => {
+            handleCancel();
+          },
+        },
+      );
+    } else if (mode === 'edit' && transactionId) {
+      updateTransaction(
+        {
+          spaceId,
+          transactionId,
+          data: formData,
+        },
+        {
+          onSuccess: () => {
+            handleCancel();
+          },
+        },
+      );
+    }
   };
 
   return (
