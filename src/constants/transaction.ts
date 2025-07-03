@@ -1,41 +1,41 @@
 export const CATEGORIES = {
-  health: {
+  Health: {
     name: 'Health',
     color: '#FF6B6B',
   },
-  salary: {
+  Salary: {
     name: 'Salary',
     color: '#22C55E',
   },
-  grocery: {
+  Grocery: {
     name: 'Grocery',
     color: '#FBBF24',
   },
-  food: {
+  Food: {
     name: 'Food',
     color: '#FB7185',
   },
-  bills: {
+  Bills: {
     name: 'Bills',
     color: '#6366F1',
   },
-  freelance: {
+  Freelance: {
     name: 'Freelance',
     color: '#0EA5E9',
   },
-  transport: {
+  Transport: {
     name: 'Transport',
     color: '#F472B6',
   },
-  entertainment: {
+  Entertainment: {
     name: 'Entertainment',
     color: '#A78BFA',
   },
-  investment: {
+  Investment: {
     name: 'Investment',
     color: '#34D399',
   },
-  shopping: {
+  Shopping: {
     name: 'Shopping',
     color: '#F59E42',
   },

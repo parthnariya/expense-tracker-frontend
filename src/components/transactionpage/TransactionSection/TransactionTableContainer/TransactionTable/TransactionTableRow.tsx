@@ -16,7 +16,7 @@ interface TransactionTableRowProps {
 const TransactionTableRow = ({ transaction }: TransactionTableRowProps) => (
   <TableBodyRow key={transaction.id}>
     <TableBodyCell>{formatDate(transaction.date)}</TableBodyCell>
-    <TableBodyCell>{transaction.description}</TableBodyCell>
+    <TableBodyCell>{transaction.title}</TableBodyCell>
     <TableBodyCell>
       <Chip
         label={transaction.category}

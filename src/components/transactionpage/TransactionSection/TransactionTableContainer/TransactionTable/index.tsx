@@ -55,7 +55,7 @@ const TransactionTable = ({
         <TableHead>
           <TableRow>
             <TableHeadCell>Date</TableHeadCell>
-            <TableHeadCell>Description</TableHeadCell>
+            <TableHeadCell>Title</TableHeadCell>
             <TableHeadCell>Category</TableHeadCell>
             <TableHeadCell>Amount</TableHeadCell>
             <TableHeadCell>Action</TableHeadCell>
